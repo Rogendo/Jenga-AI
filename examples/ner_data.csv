@@ -1,0 +1,5 @@
+text,labels
+"Jina langu ni John Doe na ninaishi Nairobi", "B-PER I-PER O O O B-LOC"
+"Rais wa Kenya ni William Ruto", "O O B-LOC O B-PER I-PER"
+"Kampuni ya Safaricom ilitangaza faida kubwa", "O O B-ORG O O O"
+"Mkutano utafanyika katika jengo la KICC", "O O O O B-LOC"

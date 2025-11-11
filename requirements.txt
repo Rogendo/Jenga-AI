@@ -1,0 +1,9 @@
+transformers
+torch
+scikit-learn
+pandas
+numpy
+tqdm
+datasets
+mlflow
+tensorboard

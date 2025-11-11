@@ -1,0 +1,14 @@
+artifact_uri: file:///Users/naynek/Desktop/MultiClassifier/new/v2/mlruns/745655962540353263/25b030dea817496d852c550750435893/artifacts
+end_time: 1762817034956
+entry_point_name: ''
+experiment_id: '745655962540353263'
+lifecycle_stage: active
+run_id: 25b030dea817496d852c550750435893
+run_name: unequaled-frog-300
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1762817034530
+status: 3
+tags: []
+user_id: naynek

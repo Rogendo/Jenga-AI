@@ -1,0 +1,61 @@
+# mkdocs.yml
+site_name: Jenga-NLP
+site_description:  Democratizing NLP, an Open-Source Framework for African NLP Fine-tuning
+site_url: https://democraticise-nlp.github.io
+repo_url: https://github.com/Rogendo/Jenga-nlp
+repo_name: Rogendo/Jenga-nlp
+
+theme:
+  name: material
+  logo: assets/logo.png
+  favicon: assets/favicon.ico
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - toc.integrate
+    - search.suggest
+    - search.highlight
+  palette:
+    - scheme: default
+      primary: gray
+      accent: purple
+    - scheme: dark
+      primary: black
+      accent: orange
+
+plugins:
+  - search
+  - awesome-pages
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - admonition
+  - pymdownx.details
+
+nav:
+  - Home: index.md
+  - About: about.md
+  - Getting Started:
+    - Installation: getting-started/installation.md
+    - Quick Start: getting-started/quickstart.md
+  - Tutorials: tutorials.md
+  - Developer Guide:
+    - Core Concepts:
+      - Architecture: developer_guide/core_concepts/architecture.md
+      - Configuration: developer_guide/core_concepts/configuration.md
+    - Core Components:
+      - Model: developer_guide/core_components/model.md
+      - Tasks: developer_guide/core_components/tasks.md
+      - Fusion: developer_guide/core_components/fusion.md
+    - Training & Evaluation:
+      - Trainer: developer_guide/training_evaluation/trainer.md
+      - Metrics: developer_guide/training_evaluation/metrics.md
+    - Logging: developer_guide/logging/logging.md
+    - Deployment: developer_guide/deployment/deployment.md
+  - Gallery: gallery.md
+  - API Reference: api-reference.md
