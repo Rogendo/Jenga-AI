@@ -50,7 +50,6 @@ git sc
 
   After running these commands, close and reopen your terminal or run `source ~/.bashrc` (or `source ~/.zshrc`) to ensure the changes are loaded in your current session.
 
-
 ## Usage Summary
 
 1. **Start working**: `git sc`
