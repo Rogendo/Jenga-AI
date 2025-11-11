@@ -1,0 +1,14 @@
+artifact_uri: file:///Users/naynek/Desktop/MultiClassifier/new/v2/mlruns/857563622635573633/b56eb4c1947245f48142bea7af451d46/artifacts
+end_time: 1762834116925
+entry_point_name: ''
+experiment_id: '857563622635573633'
+lifecycle_stage: active
+run_id: b56eb4c1947245f48142bea7af451d46
+run_name: classy-sponge-382
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1762834111507
+status: 3
+tags: []
+user_id: naynek

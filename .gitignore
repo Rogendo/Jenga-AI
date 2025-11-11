@@ -1,12 +1,25 @@
 # Byte-compiled / optimized / DLL files
 __pycache__/
+*.pyc
+*cpython-312.pyc
 *.py[codz]
 *$py.class
 
 # C extensions
 *.so
+docs/.DS_Store
+docs/docs/.DS_Store
+docs/docs/assets/.DS_Store
+docs/.DS_Store
+python3
+
+
 
 # Distribution / packaging
+*.egg-info/
+JengaAI.egg-info/
+multitask_bert.egg-info/
+docs/venv/
 .Python
 build/
 develop-eggs/
@@ -21,7 +34,6 @@ sdist/
 var/
 wheels/
 share/python-wheels/
-*.egg-info/
 .installed.cfg
 *.egg
 MANIFEST
@@ -143,6 +155,8 @@ venv/
 ENV/
 env.bak/
 venv.bak/
+docs/venv/ # From local
+docs/docs/venv/
 
 # Spyder project settings
 .spyderproject
@@ -182,9 +196,9 @@ cython_debug/
 .abstra/
 
 # Visual Studio Code
-#  Visual Studio Code specific template is maintained in a separate VisualStudioCode.gitignore 
+#  Visual Studio Code specific template is maintained in a separate VisualStudioCode.gitignore
 #  that can be found at https://github.com/github/gitignore/blob/main/Global/VisualStudioCode.gitignore
-#  and can be added to the global gitignore or merged into this file. However, if you prefer, 
+#  and can be added to the global gitignore or merged into this file. However, if you prefer,
 #  you could uncomment the following to ignore the entire vscode folder
 # .vscode/
 
@@ -205,3 +219,9 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# OS-generated files
+.DS_Store # From local
+
+# MLFlow runs
+mlruns/ # From local

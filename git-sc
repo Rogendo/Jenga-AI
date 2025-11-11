@@ -1,0 +1,34 @@
+
+# git-sc - Start Commit Script
+echo "🚀 Starting work session..."
+
+# Get current branch
+current_branch=$(git branch --show-current)
+
+# Stash any uncommitted changes
+echo "📦 Stashing any uncommitted changes..."
+git stash push -m "Auto-stash before sync $(date)"
+
+# Pull latest changes from main
+echo "⬇️  Pulling latest changes from main..."
+git pull origin main
+
+# Check if we're on main branch
+if [ "$current_branch" != "main" ]; then
+    echo "🔀 You're on branch: $current_branch"
+    echo "💡 Consider merging main into your branch: git merge main"
+fi
+
+# Apply stashed changes if any
+stash_list=$(git stash list)
+if [[ $stash_list == *"Auto-stash before sync"* ]]; then
+    echo "🔄 Applying stashed changes..."
+    git stash pop
+fi
+
+# Show current status
+echo "📊 Current status:"
+git status --short
+
+echo "✅ Ready to work! Current branch: $current_branch"
+echo "💡 Remember to use 'git etc \"your message\"' when done"

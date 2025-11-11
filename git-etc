@@ -1,0 +1,38 @@
+
+# git-etc - End Commit Script
+if [ $# -eq 0 ]; then
+    echo "❌ Please provide a commit message: git etc \"your message\""
+    exit 1
+fi
+
+commit_message=$1
+current_branch=$(git branch --show-current)
+
+echo "🎯 Ending work session..."
+
+# Check if there are changes to commit
+if git diff-index --quiet HEAD --; then
+    echo "ℹ️  No changes to commit"
+else
+    # Add all changes
+    echo "📦 Staging changes..."
+    git add .
+    
+    # Commit changes
+    echo "💾 Committing changes..."
+    git commit -m "$commit_message"
+    
+    # Push changes
+    echo "🚀 Pushing to remote..."
+    git push origin $current_branch
+    
+    echo "✅ Successfully committed and pushed!"
+    echo "📝 Commit message: $commit_message"
+    echo "🌿 Branch: $current_branch"
+fi
+
+# Show final status
+echo "📊 Final status:"
+git status --short
+
+echo "🎉 Work session completed!"

@@ -1,0 +1,27 @@
+
+# setup-git-automation.sh
+echo "Setting up Git automation for Jenga-AI..."
+
+# Create bin directory in home folder
+mkdir -p ~/bin
+
+# Make scripts executable and copy to bin
+chmod +x git-sc git-etc git-sync git-status-check
+cp git-sc git-etc git-sync git-status-check ~/bin/
+
+# Add to PATH if not already present
+if [[ ":$PATH:" != *":$HOME/bin:"* ]]; then
+    echo 'export PATH="$HOME/bin:$PATH"' >> ~/.bashrc
+    echo 'export PATH="$HOME/bin:$PATH"' >> ~/.zshrc
+    echo "Added ~/bin to PATH"
+fi
+
+# Source the updated profile
+source ~/.bashrc 2>/dev/null || source ~/.zshrc 2>/dev/null
+
+echo "Git automation setup complete!"
+echo "Available commands:"
+echo "  git sc - Start work session"
+echo "  git etc \"message\" - End work session with commit"
+echo "  git sync - Sync with main branch"
+echo "  git status-check - Comprehensive status check"

@@ -1,0 +1,22 @@
+
+# git-status-check - Comprehensive status check
+echo "📊 Comprehensive Git Status Check"
+
+echo "🌿 Current branch:"
+git branch --show-current
+
+echo ""
+echo "📋 Status:"
+git status --short
+
+echo ""
+echo "📜 Recent commits:"
+git log --oneline -5
+
+echo ""
+echo "🔄 Remote status:"
+git remote -v
+
+echo ""
+echo "📦 Stash list:"
+git stash list
