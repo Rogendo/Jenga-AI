@@ -24,6 +24,20 @@ chmod +x setup-git-automation.sh
 ./setup-git-automation.sh
 ```
 
+#### Troubleshooting Git Automation Commands
+
+If you encounter an error like `git: 'sc' is not a git command` (or similar for `git etc`, `git sync`, `git status-check`), it means your shell hasn't correctly loaded the custom commands or the git aliases are not set up. To resolve this, you can manually create the git aliases:
+
+```bash
+git config --global alias.sc '!sh -c "$HOME/bin/git-sc"'
+git config --global alias.etc '!sh -c "$HOME/bin/git-etc"'
+git config --global alias.sync '!sh -c "$HOME/bin/git-sync"'
+git config --global alias.status-check '!sh -c "$HOME/bin/git-status-check"'
+```
+
+After running these commands, close and reopen your terminal or run `source ~/.bashrc` (or `source ~/.zshrc`) to ensure the changes are loaded in your current session.
+
+
 ##  Daily Workflow
 
 ### Starting Work Session - `git sc`
