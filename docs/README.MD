@@ -62,4 +62,3 @@ To use the script, run the following commands:
 ```bash
 chmod +x setup-docs.sh
 ./setup-docs.sh
-```
