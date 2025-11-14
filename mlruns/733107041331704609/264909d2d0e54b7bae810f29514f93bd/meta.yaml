@@ -1,0 +1,14 @@
+artifact_uri: file:///Users/naynek/Desktop/MultiClassifier/new/v2/mlruns/733107041331704609/264909d2d0e54b7bae810f29514f93bd/artifacts
+end_time: 1762930959819
+entry_point_name: ''
+experiment_id: '733107041331704609'
+lifecycle_stage: active
+run_id: 264909d2d0e54b7bae810f29514f93bd
+run_name: popular-stoat-581
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1762930948828
+status: 3
+tags: []
+user_id: naynek

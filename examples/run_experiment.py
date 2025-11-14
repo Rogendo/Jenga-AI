@@ -30,7 +30,23 @@ def main(config_path: str):
 
     # 2. Load Tokenizer
     print(f"Loading tokenizer: {config.model.base_model}")
-    tokenizer = AutoTokenizer.from_pretrained(config.model.base_model)
+    try:
+        tokenizer = AutoTokenizer.from_pretrained(config.model.base_model, use_fast=True)
+    except Exception as e:
+        raise ValueError(
+            f"Failed to load fast tokenizer for model '{config.model.base_model}'. "
+            "Ensure the model has a fast tokenizer available and that `tokenizers` library is installed. "
+            f"Original error: {e}"
+        )
+    
+    if not tokenizer.is_fast:
+        raise ValueError(
+            f"The tokenizer loaded for model '{config.model.base_model}' is not a fast tokenizer. "
+            "NER label alignment requires a fast tokenizer that supports `return_offsets_mapping` "
+            "and `word_ids`. Please use a model with a fast tokenizer (e.g., BERT, RoBERTa, DistilBERT, "
+            "XLM-RoBERTa, BART)."
+        )
+
     # Add pad token if it doesn't exist
     if tokenizer.pad_token is None:
         tokenizer.add_special_tokens({'pad_token': '[PAD]'})

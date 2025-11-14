@@ -111,51 +111,72 @@ class DataProcessor:
         task_config.label_maps = {'ner_head': id_to_label}
 
         def align_labels_with_tokens(examples):
-            tokenized_inputs = self.tokenizer(
-                examples['text'],
-                padding=False,
-                truncation=self.config.tokenizer.truncation,
-                max_length=self.config.tokenizer.max_length,
-                is_split_into_words=False,
-                return_offsets_mapping=True # We need offset mapping to find character spans
-            )
-
-            labels = []
-            for batch_index in range(len(examples['text'])):
-                word_ids = tokenized_inputs.word_ids(batch_index=batch_index)
-                offset_mapping = tokenized_inputs['offset_mapping'][batch_index]
+            if task_config.use_offset_mapping_for_ner:
+                try:
+                    tokenized_inputs = self.tokenizer(
+                        examples['text'],
+                        padding=False,
+                        truncation=self.config.tokenizer.truncation,
+                        max_length=self.config.tokenizer.max_length,
+                        is_split_into_words=False,
+                        return_offsets_mapping=True # We need offset mapping to find character spans
+                    )
+                except NotImplementedError as e:
+                    raise ValueError(
+                        f"The tokenizer for model '{self.config.model.base_model}' does not support "
+                        "`return_offsets_mapping`, which is required for NER label alignment when "
+                        "`use_offset_mapping_for_ner` is True. Please set `use_offset_mapping_for_ner` to False "
+                        "in your task configuration or use a model with a fast tokenizer that supports it. "
+                        f"Original error: {e}"
+                    )
                 
-                # Initialize labels for this example
-                current_labels = [-100] * len(word_ids)
-                
-                # Map entities to token labels
-                for entity in examples['entities'][batch_index]:
-                    start_char = entity['start']
-                    end_char = entity['end']
-                    entity_label_id = label_to_id[entity['label']]
+                labels = []
+                for batch_index in range(len(examples['text'])):
+                    word_ids = tokenized_inputs.word_ids(batch_index=batch_index)
+                    if word_ids is None:
+                        raise ValueError(
+                            f"The tokenizer for model '{self.config.model.base_model}' does not provide `word_ids` "
+                            "even though `return_offsets_mapping` was requested. This is unexpected. "
+                            "Please ensure you are using a fast tokenizer or set `use_offset_mapping_for_ner` to False."
+                        )
+                    offset_mapping = tokenized_inputs['offset_mapping'][batch_index]
                     
-                    # Find the tokens that cover this entity
-                    token_start_index = -1
-                    token_end_index = -1
+                    # Initialize labels for this example
+                    current_labels = [-100] * len(word_ids)
                     
-                    for i, (offset_start, offset_end) in enumerate(offset_mapping):
-                        if offset_start == 0 and offset_end == 0: # Special tokens like [CLS], [SEP]
-                            continue
+                    # Map entities to token labels
+                    for entity in examples['entities'][batch_index]:
+                        start_char = entity['start']
+                        end_char = entity['end']
+                        entity_label_id = label_to_id[entity['label']]
                         
-                        # Check for overlap
-                        if max(start_char, offset_start) < min(end_char, offset_end):
-                            if token_start_index == -1:
-                                token_start_index = i
-                            token_end_index = i
-                    
-                    if token_start_index != -1 and token_end_index != -1:
-                        # Assign B-I-O labels
-                        current_labels[token_start_index] = entity_label_id # B-TAG
-                        for i in range(token_start_index + 1, token_end_index + 1):
-                            current_labels[i] = entity_label_id # I-TAG (for simplicity, using same ID)
+                        # Find the tokens that cover this entity
+                        token_start_index = -1
+                        token_end_index = -1
+                        
+                        for i, (offset_start, offset_end) in enumerate(offset_mapping):
+                            if offset_start == 0 and offset_end == 0: # Special tokens like [CLS], [SEP]
+                                continue
                             
-                labels.append(current_labels)
-            tokenized_inputs["labels"] = labels
-            return tokenized_inputs
-
-        return dataset.map(align_labels_with_tokens, batched=True)
+                            # Check for overlap
+                            if max(start_char, offset_start) < min(end_char, offset_end):
+                                if token_start_index == -1:
+                                    token_start_index = i
+                                token_end_index = i
+                        
+                        if token_start_index != -1 and token_end_index != -1:
+                            # Assign B-I-O labels
+                            current_labels[token_start_index] = entity_label_id # B-TAG
+                            for i in range(token_start_index + 1, token_end_index + 1):
+                                current_labels[i] = entity_label_id # I-TAG (for simplicity, using same ID)
+                                
+                    labels.append(current_labels)
+                tokenized_inputs["labels"] = labels
+                return tokenized_inputs
+            else:
+                # If use_offset_mapping_for_ner is False, we don't have a fallback implemented yet.
+                raise ValueError(
+                    "NER label alignment without `return_offsets_mapping` is not currently supported. "
+                    "Please set `use_offset_mapping_for_ner` to True in your task configuration and "
+                    "use a model with a fast tokenizer that supports `return_offsets_mapping` and `word_ids`."
+                )

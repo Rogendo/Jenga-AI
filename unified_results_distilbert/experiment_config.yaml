@@ -1,0 +1,73 @@
+model:
+  base_model: distilbert-base-uncased
+  dropout: 0.1
+  fusion: null
+project_name: JengaAI_Unified_Framework
+tasks:
+- data_path: examples/sentiment_data.jsonl
+  heads:
+  - name: sentiment_head
+    num_labels: 2
+    weight: 1.0
+  label_maps: null
+  name: SentimentClassifier
+  type: single_label_classification
+- data_path: examples/ner_data.jsonl
+  heads:
+  - name: ner_head
+    num_labels: 4
+    weight: 1.0
+  label_maps:
+    ner_head:
+      0: LOC
+      1: O
+      2: ORG
+      3: PER
+  name: SwahiliNER
+  type: ner
+- data_path: examples/qa_score_data.json
+  heads:
+  - name: opening
+    num_labels: 1
+    weight: 1.0
+  - name: listening
+    num_labels: 5
+    weight: 1.0
+  - name: proactiveness
+    num_labels: 3
+    weight: 1.0
+  - name: resolution
+    num_labels: 5
+    weight: 1.0
+  - name: hold
+    num_labels: 2
+    weight: 1.0
+  - name: closing
+    num_labels: 1
+    weight: 1.0
+  label_maps: null
+  name: QAScoring
+  type: multi_label_classification
+tokenizer:
+  max_length: 256
+  pad_token_id: 0
+  padding: max_length
+  truncation: true
+training:
+  batch_size: 8
+  device: cpu
+  early_stopping_patience: 3
+  eval_strategy: epoch
+  greater_is_better: false
+  learning_rate: 2.0e-05
+  load_best_model_at_end: true
+  logging:
+    experiment_name: JengaAI_MVP_DistilBERT
+    service: mlflow
+    tracking_uri: null
+  metric_for_best_model: eval_loss
+  num_epochs: 5
+  output_dir: ./unified_results_distilbert
+  save_strategy: epoch
+  warmup_steps: 100
+  weight_decay: 0.01

@@ -1,0 +1,68 @@
+project_name: "JengaAI_Unified_Framework"
+
+model:
+  base_model: "Helsinki-NLP/opus-mt-en-fr"
+  dropout: 0.1
+
+tokenizer:
+  max_length: 256
+  padding: "max_length"
+  truncation: true
+
+training:
+  output_dir: "./unified_results_mt_transformer"
+  learning_rate: 2.0e-5
+  batch_size: 8
+  num_epochs: 5
+  weight_decay: 0.01
+  warmup_steps: 100
+  eval_strategy: "epoch"
+  save_strategy: "epoch"
+  load_best_model_at_end: true
+  metric_for_best_model: "eval_loss"
+  greater_is_better: false
+  early_stopping_patience: 3
+  logging:
+    service: "mlflow"
+    experiment_name: "JengaAI_MVP_MT_Transformer"
+
+tasks:
+  - name: "SentimentClassifier"
+    type: "single_label_classification"
+    data_path: "examples/sentiment_data.jsonl"
+    heads:
+      - name: "sentiment_head"
+        num_labels: 2 # For positive/negative sentiment
+        weight: 1.0
+
+  - name: "SwahiliNER"
+    type: "ner"
+    data_path: "examples/ner_data.jsonl" # Updated path
+    use_offset_mapping_for_ner: True
+    heads:
+      - name: "ner_head"
+        num_labels: 13 # Placeholder, will be determined from data
+        weight: 1.0
+
+  - name: "QAScoring"
+    type: "multi_label_classification" # Since it's multi-head binary classification
+    data_path: "examples/qa_score_data.json" # Updated path
+    heads:
+      - name: "opening"
+        num_labels: 1
+        weight: 1.0
+      - name: "listening"
+        num_labels: 5
+        weight: 1.0
+      - name: "proactiveness"
+        num_labels: 3
+        weight: 1.0
+      - name: "resolution"
+        num_labels: 5
+        weight: 1.0
+      - name: "hold"
+        num_labels: 2
+        weight: 1.0
+      - name: "closing"
+        num_labels: 1
+        weight: 1.0
