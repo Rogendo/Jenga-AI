@@ -1,12 +1,10 @@
 model:
   base_model: distilbert-base-uncased
   dropout: 0.1
-  fusion:
-    hidden_size: 768
-    type: attention
+  fusion: null
 project_name: JengaAI_NER_Experiment
 tasks:
-- data_path: examples/ner_data.jsonl
+- data_path: /home/naynek/Desktop/Jenga-AI/examples/ner_data.jsonl
   heads:
   - name: ner_head
     num_labels: 4
@@ -20,7 +18,7 @@ tasks:
   name: SwahiliNER
   type: ner
 tokenizer:
-  max_length: 256
+  max_length: 512
   pad_token_id: 0
   padding: max_length
   truncation: true
