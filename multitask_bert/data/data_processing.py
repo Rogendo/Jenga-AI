@@ -113,7 +113,7 @@ class DataProcessor:
         def align_labels_with_tokens(examples):
             tokenized_inputs = self.tokenizer(
                 examples['text'],
-                padding=False,
+                padding=self.config.tokenizer.padding,
                 truncation=self.config.tokenizer.truncation,
                 max_length=self.config.tokenizer.max_length,
                 is_split_into_words=False,

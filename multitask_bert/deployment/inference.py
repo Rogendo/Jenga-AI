@@ -21,10 +21,9 @@ class InferenceHandler:
         # Load model config
         model_config = AutoConfig.from_pretrained(model_path)
         
-        self.model = MultiTaskModel.from_pretrained(
-            model_path,
+        self.model = MultiTaskModel(
             config=model_config,
-            model_name=config.model.base_model, # This is just for the encoder init
+            model_config=config.model,
             tasks=tasks
         )
         self.model.eval()

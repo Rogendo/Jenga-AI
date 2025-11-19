@@ -1,9 +1,7 @@
 model:
   base_model: distilbert-base-uncased
   dropout: 0.1
-  fusion:
-    hidden_size: 768
-    type: attention
+  fusion: null
 project_name: JengaAI_Unified_Framework
 tasks:
 - data_path: examples/sentiment_data.jsonl

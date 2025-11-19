@@ -1,4 +1,5 @@
 import argparse
+import torch
 from transformers import AutoTokenizer, AutoConfig
 import dataclasses # Added import
 from multitask_bert.core.config import load_experiment_config
@@ -24,6 +25,7 @@ def main(config_path: str):
     """
     Main function to run a multi-task experiment from a config file.
     """
+    # torch.autograd.set_detect_anomaly(True)
     # 1. Load Config
     print("Loading experiment configuration...")
     config = load_experiment_config(config_path)
@@ -43,7 +45,7 @@ def main(config_path: str):
     print("Processing data for all tasks...")
     train_datasets, eval_datasets, updated_config = DataProcessor(config, tokenizer).process()
     config = updated_config # The processor might update num_labels, etc.
-
+    
     # 4. Instantiate Tasks and Model
     print("Instantiating tasks and model...")
     tasks = [get_task_class(t.type)(t) for t in config.tasks]

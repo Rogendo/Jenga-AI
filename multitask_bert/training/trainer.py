@@ -9,6 +9,8 @@ import numpy as np
 from typing import List, Dict, Any
 import itertools
 import os
+import mlflow # Added import
+from torch.utils.tensorboard import SummaryWriter # Added import
 
 from ..core.config import ExperimentConfig
 from ..core.model import MultiTaskModel
@@ -84,15 +86,13 @@ class Trainer:
             exp_name = self.training_args.logging.experiment_name
             
             if service == "tensorboard":
-                from torch.utils.tensorboard import SummaryWriter
                 log_dir = os.path.join(self.training_args.output_dir, "logs", exp_name)
                 self.logger = SummaryWriter(log_dir=log_dir)
                 print(f"TensorBoard logger initialized. Log directory: {log_dir}")
             elif service == "mlflow":
-                import mlflow
                 if self.training_args.logging.tracking_uri:
                     mlflow.set_tracking_uri(self.training_args.logging.tracking_uri)
-                mlflow.set_experiment(exp_name)
+                mlflow.set_experiment(exp_name) 
                 mlflow.start_run()
                 self.logger = mlflow
                 print(f"MLflow logger initialized. Experiment: '{exp_name}'")

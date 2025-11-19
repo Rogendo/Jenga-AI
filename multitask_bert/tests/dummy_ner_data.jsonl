@@ -1,0 +1,3 @@
+
+{"text": "Apple Inc. is an American multinational technology company.", "entities": [{"start": 0, "end": 9, "label": "ORG"}, {"start": 20, "end": 28, "label": "NORP"}]}
+{"text": "Tim Cook is the CEO of Apple.", "entities": [{"start": 0, "end": 8, "label": "PERSON"}, {"start": 22, "end": 27, "label": "ORG"}]}

@@ -1,0 +1,31 @@
+
+model:
+  name: "EleutherAI/gpt-neo-125M"
+  quantization: null
+  peft_config:
+    peft_type: "LORA"
+    r: 8
+    lora_alpha: 32
+    lora_dropout: 0.05
+    target_modules:
+      - "q_proj"
+      - "v_proj"
+  teacher_student_config:
+    teacher_model: "EleutherAI/gpt-neo-125M"
+    distillation_alpha: 0.5
+
+data:
+  - path: "examples/dummy_data.json"
+    format: "json"
+    train_split: "train"
+    eval_split: "validation"
+    max_length: 512
+
+training:
+  output_dir: "llm_finetuning_output"
+  learning_rate: 2e-4
+  batch_size: 1
+  num_epochs: 1
+  gradient_accumulation_steps: 4
+  logging_steps: 10
+  save_steps: 50

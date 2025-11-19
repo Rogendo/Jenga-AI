@@ -1,0 +1,24 @@
+
+{
+  "data": [
+    {
+      "paragraphs": [
+        {
+          "context": "The capital of France is Paris.",
+          "qas": [
+            {
+              "question": "What is the capital of France?",
+              "id": "0",
+              "answers": [
+                {
+                  "text": "Paris",
+                  "answer_start": 19
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -70,13 +70,18 @@ def test_simple_fusion():
     from multitask_bert.core.fusion import AttentionFusion
     
     # Test the fusion module directly
-    hidden_size = 768
+    class MockConfig:
+        def __init__(self, hidden_size):
+            self.hidden_size = hidden_size
+
+    mock_config = MockConfig(hidden_size=768)
     num_tasks = 2
-    fusion = AttentionFusion(hidden_size, num_tasks)
+    fusion = AttentionFusion(mock_config, num_tasks)
     
     # Create dummy hidden states
     batch_size = 2
     seq_len = 10
+    hidden_size = 768
     hidden_states = torch.randn(batch_size, seq_len, hidden_size)
     
     print(f"Input hidden states shape: {hidden_states.shape}")

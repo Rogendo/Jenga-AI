@@ -5,7 +5,7 @@ model:
   dropout: 0.1
 
 tokenizer:
-  max_length: 256
+  max_length: 512
   padding: "max_length"
   truncation: true
 
@@ -29,7 +29,7 @@ training:
 tasks:
   - name: "SwahiliNER"
     type: "ner"
-    data_path: "examples/ner_data.jsonl"
+    data_path: "/home/naynek/Desktop/Jenga-AI/examples/data/ner_synthetic_dataset_v1.jsonl"
     heads:
       - name: "ner_head"
         num_labels: 13 # Placeholder, will be determined from data

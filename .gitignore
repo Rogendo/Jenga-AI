@@ -12,6 +12,8 @@ docs/docs/.DS_Store
 docs/docs/assets/.DS_Store
 docs/.DS_Store
 python3
+mlruns/
+/home/naynek/Desktop/Jenga-AI/mlruns
 
 
 
@@ -225,3 +227,18 @@ __marimo__/
 
 # MLFlow runs
 mlruns/ # From local
+test_output_multitask_bert/logs/test_multitask_bert_run/events.out.tfevents.1763274725.naynek-HP-EliteBook-840-G3.1050212.0
+test_output_multitask_bert/logs/test_multitask_bert_run/events.out.tfevents.1763254593.naynek-HP-EliteBook-840-G3.802552.0
+test_output_multitask_bert/logs
+examples/data/balanced_cases_generated_data_v0005.json
+examples/data/en_sw.csv
+examples/data/cases_generated_data_v0005.json
+examples/data/cases_generated_data_v0005.json
+examples/data/ner_synthetic_dataset_v1.jsonl
+examples/data/synthetic_qa_metrics_data_v01x.json
+llm_finetuning_output/checkpoint-1/adapter_model.safetensors
+llm_finetuning_output/runs/Nov16_10-18-29_naynek-HP-EliteBook-840-G3/events.out.tfevents.1763277512.naynek-HP-EliteBook-840-G3.1087375.0
+llm_finetuning_output/runs/Nov16_10-16-48_naynek-HP-EliteBook-840-G3/events.out.tfevents.1763277411.naynek-HP-EliteBook-840-G3.1085917.0
+llm_finetuning_output/runs/Nov16_10-17-38_naynek-HP-EliteBook-840-G3/events.out.tfevents.1763277462.naynek-HP-EliteBook-840-G3.1086591.0
+llm_finetuning_output/checkpoint-1/vocab.json
+llm_finetuning_output/

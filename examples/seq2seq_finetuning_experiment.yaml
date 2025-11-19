@@ -1,0 +1,27 @@
+
+model:
+  name: "Helsinki-NLP/opus-mt-en-fr"
+  teacher_student_config:
+    teacher_model: "Helsinki-NLP/opus-mt-en-fr"
+    distillation_alpha: 0.5
+
+data:
+  path: "examples/dummy_translation_data.json"
+  format: "json"
+  source_lang: "en"
+  target_lang: "fr"
+  train_split: "train"
+  eval_split: "validation"
+  max_length: 128
+
+training:
+  output_dir: "seq2seq_finetuning_output"
+  learning_rate: 2e-5
+  batch_size: 4
+  num_epochs: 3
+  gradient_accumulation_steps: 1
+  logging_steps: 10
+  save_steps: 100
+  logging_config:
+    report_to: "tensorboard"
+    run_name: "seq2seq_finetuning_run"
