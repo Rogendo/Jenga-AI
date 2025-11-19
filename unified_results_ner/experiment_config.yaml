@@ -1,7 +1,9 @@
 model:
   base_model: distilbert-base-uncased
   dropout: 0.1
-  fusion: null
+  fusion:
+    hidden_size: 768
+    type: attention
 project_name: JengaAI_NER_Experiment
 tasks:
 - data_path: examples/ner_data.jsonl
