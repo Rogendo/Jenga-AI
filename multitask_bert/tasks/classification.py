@@ -1,9 +1,11 @@
 import torch
 import torch.nn as nn
-from typing import Dict, Any, Optional # Added Optional
+from typing import Dict, Any, Optional
 from .base import BaseTask
 from ..core.config import TaskConfig
+from ..core.registry import register_task
 
+@register_task("classification")
 class MultiHeadSingleLabelClassificationTask(BaseTask):
     """
     A task for multi-head, single-label, multi-class classification.
@@ -53,6 +55,7 @@ class MultiHeadSingleLabelClassificationTask(BaseTask):
 
         return {"loss": total_loss, "logits": all_logits}
 
+@register_task("multi_label_classification")
 class MultiLabelClassificationTask(BaseTask):
     """
     A task for multi-label classification, where each head can predict multiple binary outcomes.

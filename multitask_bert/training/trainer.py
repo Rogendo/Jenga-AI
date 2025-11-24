@@ -2,7 +2,7 @@ import torch
 from torch.utils.data import DataLoader
 from torch.nn.utils.rnn import pad_sequence
 from torch.optim import AdamW
-from transformers import PreTrainedTokenizer
+from transformers import PreTrainedTokenizer, AutoTokenizer, AutoConfig
 from transformers.optimization import get_linear_schedule_with_warmup
 from tqdm import tqdm
 import numpy as np
@@ -12,8 +12,9 @@ import os
 import mlflow
 from torch.utils.tensorboard import SummaryWriter
 
-from ..core.config import ExperimentConfig
+from ..core.config import ExperimentConfig, load_experiment_config
 from ..core.model import MultiTaskModel
+from ..data.data_processing import DataProcessor
 from ..utils.metrics import (
     compute_classification_metrics,
     compute_multi_label_metrics,
@@ -88,6 +89,42 @@ class Trainer:
 
         self.logger = None
         self._init_logger()
+
+    @classmethod
+    def from_config(cls, config_path: str):
+        """
+        Class method to instantiate the Trainer directly from a YAML config file.
+        This method handles the entire setup process.
+        """
+        # 1. Load Config
+        print("Loading experiment configuration...")
+        config = load_experiment_config(config_path)
+
+        # 2. Load Tokenizer
+        print(f"Loading tokenizer: {config.model.base_model}")
+        tokenizer = AutoTokenizer.from_pretrained(config.model.base_model)
+        if tokenizer.pad_token is None:
+            tokenizer.add_special_tokens({'pad_token': '[PAD]'})
+        config.tokenizer.pad_token_id = tokenizer.pad_token_id
+
+        # 3. Process Data
+        print("Processing data for all tasks...")
+        data_processor = DataProcessor(config, tokenizer)
+        train_datasets, eval_datasets, updated_config = data_processor.process()
+        config = updated_config
+
+        # 4. Instantiate Model
+        print("Instantiating model...")
+        model_config = AutoConfig.from_pretrained(config.model.base_model)
+        model = MultiTaskModel(
+            config=model_config,
+            model_config=config.model,
+            task_configs=config.tasks
+        )
+        model.resize_token_embeddings(len(tokenizer))
+
+        # 5. Instantiate and return the Trainer
+        return cls(config, model, tokenizer, train_datasets, eval_datasets)
 
     def _init_logger(self):
         if self.training_args.logging:

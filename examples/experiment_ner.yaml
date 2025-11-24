@@ -30,7 +30,7 @@ training:
 tasks:
   - name: "SwahiliNER"
     type: "ner"
-    data_path: "/Users/naynek/Desktop/MultiClassifier/Jenga-AI/examples/ner_synthetic_dataset_v1.jsonl"
+    data_path: "examples/ner_synthetic_dataset_v1.jsonl"
     # data_path: "/Users/naynek/Desktop/MultiClassifier/Jenga-AI/examples/ner_data.jsonl"
     heads:
       - name: "ner_head"

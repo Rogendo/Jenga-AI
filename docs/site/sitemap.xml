@@ -1,67 +1,103 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-         <loc>https://democraticise-nlp.github.io/</loc>
-         <lastmod>2025-11-10</lastmod>
+         <loc>https://github.com/Rogendo/Jenga-AI/</loc>
+         <lastmod>2025-11-24</lastmod>
     </url>
     <url>
-         <loc>https://democraticise-nlp.github.io/about/</loc>
-         <lastmod>2025-11-10</lastmod>
+         <loc>https://github.com/Rogendo/Jenga-AI/about/</loc>
+         <lastmod>2025-11-24</lastmod>
     </url>
     <url>
-         <loc>https://democraticise-nlp.github.io/api-reference/</loc>
-         <lastmod>2025-11-10</lastmod>
+         <loc>https://github.com/Rogendo/Jenga-AI/api-reference/</loc>
+         <lastmod>2025-11-24</lastmod>
     </url>
     <url>
-         <loc>https://democraticise-nlp.github.io/gallery/</loc>
-         <lastmod>2025-11-10</lastmod>
+         <loc>https://github.com/Rogendo/Jenga-AI/gallery/</loc>
+         <lastmod>2025-11-24</lastmod>
     </url>
     <url>
-         <loc>https://democraticise-nlp.github.io/tutorials/</loc>
-         <lastmod>2025-11-10</lastmod>
+         <loc>https://github.com/Rogendo/Jenga-AI/tutorials/</loc>
+         <lastmod>2025-11-24</lastmod>
     </url>
     <url>
-         <loc>https://democraticise-nlp.github.io/developer_guide/core_components/fusion/</loc>
-         <lastmod>2025-11-10</lastmod>
+         <loc>https://github.com/Rogendo/Jenga-AI/api/core/</loc>
+         <lastmod>2025-11-24</lastmod>
     </url>
     <url>
-         <loc>https://democraticise-nlp.github.io/developer_guide/core_components/model/</loc>
-         <lastmod>2025-11-10</lastmod>
+         <loc>https://github.com/Rogendo/Jenga-AI/api/data/</loc>
+         <lastmod>2025-11-24</lastmod>
     </url>
     <url>
-         <loc>https://democraticise-nlp.github.io/developer_guide/core_components/tasks/</loc>
-         <lastmod>2025-11-10</lastmod>
+         <loc>https://github.com/Rogendo/Jenga-AI/api/tasks/</loc>
+         <lastmod>2025-11-24</lastmod>
     </url>
     <url>
-         <loc>https://democraticise-nlp.github.io/developer_guide/core_concepts/architecture/</loc>
-         <lastmod>2025-11-10</lastmod>
+         <loc>https://github.com/Rogendo/Jenga-AI/api/trainer/</loc>
+         <lastmod>2025-11-24</lastmod>
     </url>
     <url>
-         <loc>https://democraticise-nlp.github.io/developer_guide/core_concepts/configuration/</loc>
-         <lastmod>2025-11-10</lastmod>
+         <loc>https://github.com/Rogendo/Jenga-AI/developer_guide/core_components/fusion/</loc>
+         <lastmod>2025-11-24</lastmod>
     </url>
     <url>
-         <loc>https://democraticise-nlp.github.io/developer_guide/deployment/deployment/</loc>
-         <lastmod>2025-11-10</lastmod>
+         <loc>https://github.com/Rogendo/Jenga-AI/developer_guide/core_components/model/</loc>
+         <lastmod>2025-11-24</lastmod>
     </url>
     <url>
-         <loc>https://democraticise-nlp.github.io/developer_guide/logging/logging/</loc>
-         <lastmod>2025-11-10</lastmod>
+         <loc>https://github.com/Rogendo/Jenga-AI/developer_guide/core_components/tasks/</loc>
+         <lastmod>2025-11-24</lastmod>
     </url>
     <url>
-         <loc>https://democraticise-nlp.github.io/developer_guide/training_evaluation/metrics/</loc>
-         <lastmod>2025-11-10</lastmod>
+         <loc>https://github.com/Rogendo/Jenga-AI/developer_guide/core_concepts/architecture/</loc>
+         <lastmod>2025-11-24</lastmod>
     </url>
     <url>
-         <loc>https://democraticise-nlp.github.io/developer_guide/training_evaluation/trainer/</loc>
-         <lastmod>2025-11-10</lastmod>
+         <loc>https://github.com/Rogendo/Jenga-AI/developer_guide/core_concepts/configuration/</loc>
+         <lastmod>2025-11-24</lastmod>
     </url>
     <url>
-         <loc>https://democraticise-nlp.github.io/getting-started/installation/</loc>
-         <lastmod>2025-11-10</lastmod>
+         <loc>https://github.com/Rogendo/Jenga-AI/developer_guide/deployment/deployment/</loc>
+         <lastmod>2025-11-24</lastmod>
     </url>
     <url>
-         <loc>https://democraticise-nlp.github.io/getting-started/quickstart/</loc>
-         <lastmod>2025-11-10</lastmod>
+         <loc>https://github.com/Rogendo/Jenga-AI/developer_guide/logging/logging/</loc>
+         <lastmod>2025-11-24</lastmod>
+    </url>
+    <url>
+         <loc>https://github.com/Rogendo/Jenga-AI/developer_guide/training_evaluation/metrics/</loc>
+         <lastmod>2025-11-24</lastmod>
+    </url>
+    <url>
+         <loc>https://github.com/Rogendo/Jenga-AI/developer_guide/training_evaluation/trainer/</loc>
+         <lastmod>2025-11-24</lastmod>
+    </url>
+    <url>
+         <loc>https://github.com/Rogendo/Jenga-AI/getting-started/installation/</loc>
+         <lastmod>2025-11-24</lastmod>
+    </url>
+    <url>
+         <loc>https://github.com/Rogendo/Jenga-AI/getting-started/quickstart/</loc>
+         <lastmod>2025-11-24</lastmod>
+    </url>
+    <url>
+         <loc>https://github.com/Rogendo/Jenga-AI/guides/adding_a_new_task/</loc>
+         <lastmod>2025-11-24</lastmod>
+    </url>
+    <url>
+         <loc>https://github.com/Rogendo/Jenga-AI/guides/configuration/</loc>
+         <lastmod>2025-11-24</lastmod>
+    </url>
+    <url>
+         <loc>https://github.com/Rogendo/Jenga-AI/guides/deployment/</loc>
+         <lastmod>2025-11-24</lastmod>
+    </url>
+    <url>
+         <loc>https://github.com/Rogendo/Jenga-AI/tutorials/first_multitask_model/</loc>
+         <lastmod>2025-11-24</lastmod>
+    </url>
+    <url>
+         <loc>https://github.com/Rogendo/Jenga-AI/tutorials/ner_model/</loc>
+         <lastmod>2025-11-24</lastmod>
     </url>
 </urlset>

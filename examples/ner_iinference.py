@@ -11,7 +11,7 @@ from typing import List, Dict, Any
 class NERInference:
     def __init__(self, model_dir: str):
         """
-        Initialize the NER inference with trained model.
+        Initialize the NER inference with trained model. 
         
         Args:
             model_dir: Path to the directory containing best_model and experiment_config.yaml
