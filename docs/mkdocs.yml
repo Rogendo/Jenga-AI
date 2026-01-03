@@ -1,9 +1,11 @@
 # mkdocs.yml
 site_name: Jenga-NLP
-site_description:  Democratizing NLP, an Open-Source Framework for African NLP Fine-tuning
+site_description: Democratizing NLP, an Open-Source Framework for African NLP Fine-tuning
 site_url: https://democraticise-nlp.github.io
 repo_url: https://github.com/Rogendo/Jenga-nlp
 repo_name: Rogendo/Jenga-nlp
+
+docs_dir: docs/docs
 
 theme:
   name: material
@@ -20,7 +22,7 @@ theme:
     - scheme: default
       primary: gray
       accent: purple
-    - scheme: dark
+    - scheme: slate
       primary: black
       accent: orange
 
